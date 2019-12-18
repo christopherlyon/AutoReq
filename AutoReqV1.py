@@ -4,6 +4,8 @@ import time
 import webbrowser
 from datetime import date
 from playsound import playsound
+from tkinter import *
+
 
 
 system("cls")
@@ -28,11 +30,42 @@ Requisition_link = "https://fsprd.oii.oceaneering.com/psc/FSPRD/EMPLOYEE/ERP/c/N
 # Program Start
 # ------------------------------------------------
 
-Project = input("Project number? ")
-Activity = input("Activity number? ")
-#print("Setting req to", Project, "on activity number", Activity)
+master = Tk() 
+master.title('AutoReq V1') 
 
-#webbrowser.open(Requisition_link) #Open Tab
+Project_global = 0
+Activity_global = 0
+
+def Run_program():
+
+    global Project_global
+    global Activity_global
+
+    Project_global = Project.get()
+    Activity_global = Activity.get()
+    print("Project Number: %s\nActivity Number: %s" % (Project.get(), Activity.get()))
+    master.withdraw()
+
+
+Label(master, text='Project Number').grid(row=0) 
+Label(master, text='Activity Number').grid(row=1) 
+Project = Entry(master) 
+Activity = Entry(master) 
+Project.grid(row=0, column=1) 
+Activity.grid(row=1, column=1) 
+button = Button(master, width = 30, text='Start', command=Run_program) 
+button.grid(row=3, columnspan = 2,padx = 1, pady = 1)
+
+
+mainloop()
+
+print("Running")
+
+pyautogui.click(140, 94)   #Click Req
+time.sleep(2)
+
+print(Project_global)
+pyautogui.typewrite(Project_global)
 
 pyautogui.click(2748, 419)   #Click Req
 time.sleep(2)
@@ -74,11 +107,11 @@ pyautogui.typewrite("B0571")
 time.sleep(0.1)
 
 pyautogui.click(2866, 985)          #Click Project
-pyautogui.typewrite(Project)
+pyautogui.typewrite(Project_global)
 time.sleep(0.1)
 
 pyautogui.click(3060, 985)          #Click Activity
-pyautogui.typewrite(Activity)
+pyautogui.typewrite(Activity_global)
 time.sleep(0.1)
 
 pyautogui.click(3194, 985)          #Click Source Type
@@ -89,12 +122,5 @@ pyautogui.typewrite("MATO")
 
 pyautogui.click(2037, 1041)         #Click OK
 
-
 playsound("AutoReq/Done_alert.mp3") # DING DING
-
-
-# pyautogui.click(2019, 183)          #Click Whitespace
-
-
-
-# pyautogui.click(2019, 183)          #
+time.sleep(1)
