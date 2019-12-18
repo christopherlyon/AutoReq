@@ -3,14 +3,30 @@ from os import system
 import time
 import webbrowser
 from datetime import date
+from playsound import playsound
 
-today = date.today()
-Todays_date = today.strftime("%d/%m/%Y")
 
 system("cls")
 
+# Setting some variables
+# ------------------------------------------------
+
+today = date.today()
+
+Day_as_int = int(today.strftime("%d"))
+Todays_date = today.strftime("/%m/%Y")
+
+Day_plus_7 = Day_as_int + 7
+
+if Day_plus_7 > 30:
+    Day_plus_7 = 30
 
 Requisition_link = "https://fsprd.oii.oceaneering.com/psc/FSPRD/EMPLOYEE/ERP/c/NUI_FRAMEWORK.PT_AGSTARTPAGE_NUI.GBL?CONTEXTIDPARAMS=TEMPLATE_ID%3aPTPPNAVCOL&scname=ADMN_OII_REQUISITIONING&PanelCollapsible=Y&PTPPB_GROUPLET_ID=OII_REQUISITION&CRefName=ADMN_NAVCOLL_9"
+
+
+
+# Program Start
+# ------------------------------------------------
 
 Project = input("Project number? ")
 Activity = input("Activity number? ")
@@ -71,7 +87,10 @@ pyautogui.typewrite("5110")
 pyautogui.click(3308, 992)          #Click Source Type
 pyautogui.typewrite("MATO")
 
-pyautogui.click(2037, 1041)          #Click OK
+pyautogui.click(2037, 1041)         #Click OK
+
+
+playsound("AutoReq/Done_alert.mp3") # DING DING
 
 
 # pyautogui.click(2019, 183)          #Click Whitespace
