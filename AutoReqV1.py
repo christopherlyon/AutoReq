@@ -18,9 +18,11 @@ Activity = input("Activity number? ")
 
 #webbrowser.open(Requisition_link) #Open Tab
 
-#pyautogui.click(2748, 419)   #Click Req
-#pyautogui.click(2272, 425)   #Click Add
+pyautogui.click(2748, 419)   #Click Req
+time.sleep(2)
 
+pyautogui.click(2272, 425)   #Click Add
+time.sleep(1)
 
 pyautogui.click(2493, 517)   #Click Defaults
 time.sleep(1)
@@ -46,10 +48,12 @@ pyautogui.typewrite("5110")
 time.sleep(0.1)
 
 pyautogui.click(2524, 989)          #Click Dept
+time.sleep(1)
 pyautogui.typewrite("3468")
-time.sleep(0.1)
+time.sleep(0.3)
 
-pyautogui.click(2755, 989)          #Click PC Bus Unit
+pyautogui.click(2765, 992)          #Click PC Bus Unit
+time.sleep(0.1)
 pyautogui.typewrite("B0571")
 time.sleep(0.1)
 
@@ -61,13 +65,17 @@ pyautogui.click(3060, 985)          #Click Activity
 pyautogui.typewrite(Activity)
 time.sleep(0.1)
 
-pyautogui.click(3194, 985)          #Click Account
+pyautogui.click(3194, 985)          #Click Source Type
 pyautogui.typewrite("5110")
+
+pyautogui.click(3308, 992)          #Click Source Type
+pyautogui.typewrite("MATO")
+
+pyautogui.click(2037, 1041)          #Click OK
+
 
 # pyautogui.click(2019, 183)          #Click Whitespace
 
 
-pyautogui.click(3078, 196)          #Click Hours
-pyautogui.typewrite("5110")
 
 # pyautogui.click(2019, 183)          #

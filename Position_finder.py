@@ -5,6 +5,10 @@ import time
 
 system("cls")
 print("Capturing in 2 second")
+
+
+
 time.sleep(2)
 Where = pyautogui.position()
 print(Where)
+pyautogui.move(2524, 989)
