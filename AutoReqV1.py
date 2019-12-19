@@ -23,6 +23,8 @@ Day_plus_7 = Day_as_int + 7
 if Day_plus_7 > 30:
     Day_plus_7 = 30
 
+New_Req_Date = str(Day_plus_7) + str(Todays_date)
+
 Requisition_link = "https://fsprd.oii.oceaneering.com/psc/FSPRD/EMPLOYEE/ERP/c/NUI_FRAMEWORK.PT_AGSTARTPAGE_NUI.GBL?CONTEXTIDPARAMS=TEMPLATE_ID%3aPTPPNAVCOL&scname=ADMN_OII_REQUISITIONING&PanelCollapsible=Y&PTPPB_GROUPLET_ID=OII_REQUISITION&CRefName=ADMN_NAVCOLL_9"
 
 
@@ -32,6 +34,7 @@ Requisition_link = "https://fsprd.oii.oceaneering.com/psc/FSPRD/EMPLOYEE/ERP/c/N
 
 master = Tk() 
 master.title('AutoReq V1') 
+master.configure(bg = '#000000')
 
 Project_global = 0
 Activity_global = 0
@@ -44,27 +47,23 @@ def Run_program():
     Project_global = Project.get()
     Activity_global = Activity.get()
     print("Project Number: %s\nActivity Number: %s" % (Project.get(), Activity.get()))
-    master.withdraw()
+    master.destroy()
 
 
-Label(master, text='Project Number').grid(row=0) 
-Label(master, text='Activity Number').grid(row=1) 
-Project = Entry(master) 
-Activity = Entry(master) 
-Project.grid(row=0, column=1) 
-Activity.grid(row=1, column=1) 
-button = Button(master, width = 30, text='Start', command=Run_program) 
-button.grid(row=3, columnspan = 2,padx = 1, pady = 1)
+Label(master, text='Project Number', bg ="#2d2d2d", fg = "white").grid(row=0, padx=(20,10), pady=(20,10)) 
+Label(master, text='Activity Number', bg ="#2d2d2d", fg = "white").grid(row=1, padx=(20,10), pady=(10,10)) 
+
+Project = Entry(master, width = 20).grid(row=0, column=1, padx=(0,20), pady=(20,10)) 
+Activity = Entry(master, width = 20).grid(row=1, column=1, padx=(0,20), pady=(10,10)) 
+
+button = Button(master, width = 30, text='Start', command=Run_program, bg ="#2d2d2d", fg = "white") 
+button.grid(row=3, columnspan = 2, pady=(10,20))
 
 
 mainloop()
 
 print("Running")
 
-pyautogui.click(140, 94)   #Click Req
-time.sleep(2)
-
-print(Project_global)
 pyautogui.typewrite(Project_global)
 
 pyautogui.click(2748, 419)   #Click Req
@@ -85,7 +84,8 @@ pyautogui.typewrite("39000000")
 time.sleep(0.1)
 
 pyautogui.click(2222, 600)          #Click Date
-pyautogui.typewrite(Todays_date)
+print(Day_plus_7, Todays_date, sep="")
+pyautogui.typewrite(New_Req_Date)
 time.sleep(0.1)
 
 pyautogui.click(2869, 423)          #Click Measure
@@ -121,6 +121,20 @@ pyautogui.click(3308, 992)          #Click Source Type
 pyautogui.typewrite("MATO")
 
 pyautogui.click(2037, 1041)         #Click OK
+time.sleep(1)
+
+pyautogui.click(2911, 824)         #Click Quantity
+pyautogui.press("backspace")
+pyautogui.typewrite("1")
+
+pyautogui.click(3340, 824)         #Click Price
+pyautogui.press("backspace")
+pyautogui.typewrite("999")
+
+pyautogui.click(2454, 927)         #Click Refresh
+
 
 playsound("AutoReq/Done_alert.mp3") # DING DING
 time.sleep(1)
+
+#000019278700001927870000192787
