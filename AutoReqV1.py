@@ -25,8 +25,7 @@ if Day_plus_7 > 30:
 
 New_Req_Date = str(Day_plus_7) + str(Todays_date)
 
-Requisition_link = "https://fsprd.oii.oceaneering.com/psc/FSPRD/EMPLOYEE/ERP/c/NUI_FRAMEWORK.PT_AGSTARTPAGE_NUI.GBL?CONTEXTIDPARAMS=TEMPLATE_ID%3aPTPPNAVCOL&scname=ADMN_OII_REQUISITIONING&PanelCollapsible=Y&PTPPB_GROUPLET_ID=OII_REQUISITION&CRefName=ADMN_NAVCOLL_9"
-
+Requisition_link = "https://fsprd.oii.oceaneering.com/psc/FSPRD/EMPLOYEE/ERP/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL"
 
 
 # Program Start
@@ -53,8 +52,11 @@ def Run_program():
 Label(master, text='Project Number', bg ="#2d2d2d", fg = "white").grid(row=0, padx=(20,10), pady=(20,10)) 
 Label(master, text='Activity Number', bg ="#2d2d2d", fg = "white").grid(row=1, padx=(20,10), pady=(10,10)) 
 
-Project = Entry(master, width = 20).grid(row=0, column=1, padx=(0,20), pady=(20,10)) 
-Activity = Entry(master, width = 20).grid(row=1, column=1, padx=(0,20), pady=(10,10)) 
+Project = Entry(master, width = 20)
+Activity = Entry(master, width = 20)
+
+Project.grid(row=0, column=1, padx=(0,20), pady=(20,10)) 
+Activity.grid(row=1, column=1, padx=(0,20), pady=(10,10)) 
 
 button = Button(master, width = 30, text='Start', command=Run_program, bg ="#2d2d2d", fg = "white") 
 button.grid(row=3, columnspan = 2, pady=(10,20))
@@ -64,13 +66,14 @@ mainloop()
 
 print("Running")
 
-pyautogui.typewrite(Project_global)
-
-pyautogui.click(2748, 419)   #Click Req
+webbrowser.open(Requisition_link)
 time.sleep(2)
 
+pyautogui.click(2748, 419)   #Click Req
+time.sleep(2.5)
+
 pyautogui.click(2272, 425)   #Click Add
-time.sleep(1)
+time.sleep(1.5)
 
 pyautogui.click(2493, 517)   #Click Defaults
 time.sleep(1)
@@ -137,4 +140,4 @@ pyautogui.click(2454, 927)         #Click Refresh
 playsound("AutoReq/Done_alert.mp3") # DING DING
 time.sleep(1)
 
-#000019278700001927870000192787
+#00001927870000192787000019278700001927870000192787
