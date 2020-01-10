@@ -3,11 +3,11 @@ from os import system
 import time
 from playsound import playsound
 
-playsound("AutoReq/Done_alert.mp3")
 
 system("cls")
 print("Capturing in 2 second")
 
+pyautogui.click(2272, 425)   #Click Add
 
 
 time.sleep(2)

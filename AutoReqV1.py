@@ -85,7 +85,9 @@ else:
     pyautogui.click(2748, 419)   #Click Req
     time.sleep(2.5)
 
-    pyautogui.click(2272, 425)   #Click Add
+    pyautogui.keyDown("alt")
+    pyautogui.press("1")
+    pyautogui.keyUp("alt")
     time.sleep(1.5)
 
     pyautogui.click(2493, 517)   #Click Defaults
