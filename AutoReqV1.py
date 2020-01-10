@@ -61,7 +61,7 @@ Activity.grid(row=1, column=1, padx=(0,20), pady=(10,10))
 
 # Checkbutton
 
-Logged_in_check = Checkbutton(master, variable=var, bg ="#2d2d2d", fg = "white").grid(row=3, padx=(20,10), pady=(10,10))
+Logged_in_check = Checkbutton(master, variable=var, bg ="#2d2d2d").grid(row=3, padx=(20,10), pady=(10,10))
 
 # Button
 
@@ -85,12 +85,14 @@ else:
     pyautogui.click(2748, 419)   #Click Req
     time.sleep(2.5)
 
-    pyautogui.keyDown("alt")
-    pyautogui.press("1")
+    pyautogui.click(2272, 425)   #Click Add
     pyautogui.keyUp("alt")
+    pyautogui.press("1")
+    pyautogui.keyDown("alt")
+
     time.sleep(1.5)
 
-    pyautogui.click(2493, 517)   #Click Defaults
+    pyautogui.click(2493, 517)   #Click Requsition Defaults
     time.sleep(1)
 
     pyautogui.click(2222, 422)          #Click Buyer
